@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+########################
+# Author: Limony
+# Date: 2023-01-01
+###########################
+
+unset github_username dir repo license_url
+
+script_name=$(basename "$0")
+dir=""
+version="0.0.1"
+
+usage() {
+    cat <<EOF
+Script name: $script_name
+Description:
+============
+This script helps you create fluffy sounds.
+======================================
+Usage:
+======
+$script_name [ -a | --add audio_file ] [ -h | --help | -v | --version]
+Examples:
+=========
+    $script_name so
+    $script_name so_fluffy
+EOF
+}
+
+############# Main body ############
+if [ $1 = "so" ]; then
+    echo "activate so"
+    exit 0
+fi
+
+if [ $1 = "so_fluffy" ]; then
+    echo "activate so_fluffy"
+    exit 0
+fi
