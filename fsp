@@ -8,11 +8,10 @@
 unset github_username dir repo license_url
 
 formula_name="fluffy-service-pack"
-version="0.0.4"
+version="0.0.6"
 script_name=$(basename "$0")
 bin_dir=$(dirname "$0")
-echo $bin_dir
-dir="/usr/local/Cellar/"$formula_name"/"$version"/bin"
+dir=$bin_dir"/../Cellar/"$formula_name"/"$version"/bin"
 audio_dir=$dir"/audio"
 
 help() {
@@ -48,6 +47,12 @@ case "$1" in
     ;;
     -v | --version)
     echo ${version}
+    exit
+    ;;
+    -d | --dir)
+    echo bin_dir=$bin_dir
+    echo dir=$dir
+    echo audio_dir=$audio_dir
     exit
     ;;
     "")
