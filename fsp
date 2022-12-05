@@ -10,6 +10,8 @@ unset github_username dir repo license_url
 formula_name="fluffy-service-pack"
 version="0.0.4"
 script_name=$(basename "$0")
+bin_dir=$(dirname "$0")
+echo $bin_dir
 dir="/usr/local/Cellar/"$formula_name"/"$version"/bin"
 audio_dir=$dir"/audio"
 
