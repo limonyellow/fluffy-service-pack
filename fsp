@@ -8,20 +8,33 @@
 unset github_username dir repo license_url
 
 formula_name="fluffy-service-pack"
-version="0.0.3"
+version="0.0.4"
 script_name=$(basename "$0")
 dir="/usr/local/Cellar/"$formula_name"/"$version"/bin"
 audio_dir=$dir"/audio"
 
 help() {
     cat <<EOF
-This script helps you create fluffy sounds.
+This service pack will help you relax with some fulffy sounds.
 
 usage: $script_name <sound_name> [ -h | --help | -v | --version]
 
 Examples:
     $script_name so
     $script_name so_fluffy
+
+Full options:
+so                                 - "so!"
+so_fluffy                          - "so fluffy!"
+fluffy | fluffy!                   - "fluffy!"
+its_so_fluffy | isf                - "its so fluffy!"
+its_so_fluffy_im_gonna_die | sfigd - "its so fluffy im gonna die!"
+always_could_count_on_you | accoy  - "always could count on you!"
+oooweee | oowee | owe              - "oooweee!"
+hihi | hh | worms                  - "hi hi hi hi" (high pitch worm)
+lemon | give_me_lemons             - [ascii lemon!]
+bean | give_me_beans               - [ascii mr bean!]
+
 EOF
 }
 
@@ -33,6 +46,12 @@ case "$1" in
     ;;
     -v | --version)
     echo ${version}
+    exit
+    ;;
+    "")
+    echo No operation provided!
+    echo
+    help
     exit
     ;;
 esac
@@ -127,7 +146,7 @@ if [[ $1 = "its_so_fluffy" || $1 = "isf" ]]; then
     exit 0
 fi
 
-if [[ $1 = "its_so_fluffy_im_gonna_die" || $1 = "so_fluffy_im_gonna_die" || $1 = "sfigd" || $1 = "isfigd" ]]; then
+if [[ $1 = "its_so_fluffy_im_gonna_die" || $1 = "so_fluffy_im_gonna_die" || $1 = "sfigd" || $1 = "isfigd" || $1 = "die" ]]; then
     afplay $audio_dir/so_fluffy_im_gonna_die.mp3 \
     & \
     exit 0
