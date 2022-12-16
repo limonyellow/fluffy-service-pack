@@ -56,6 +56,7 @@ here | i_am_here                   - "i am here"
 not_here | nh                      - "i dont want to be here"
 still_here | sh                    - "still here?"
 good | goody | g                   - "goody"
+lebowski | money                   - "where is the money lebowski"
 lemon | give_me_lemons             - [ascii lemon!]
 bean | give_me_beans               - [ascii mr bean!]
 
@@ -234,7 +235,7 @@ main_options(){
             exit
         ;;
 
-        raccoon)
+        raccoon | r)
             afplay $audio_dir/raccoon.mp3 \
             & \
             exit
@@ -314,6 +315,12 @@ main_options(){
 
         goody | good | g)
             afplay $audio_dir/goody.mp3 \
+            & \
+            exit
+        ;;
+
+        where_is_the_money_lebowski | where_is_the_money | lebowski | money)
+            afplay $audio_dir/where_is_the_money_lebowski.mp3 \
             & \
             exit
         ;;
