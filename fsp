@@ -8,7 +8,7 @@
 unset github_username dir repo license_url
 
 formula_name="fluffy-service-pack"
-version="0.0.9"
+version="0.0.10"
 script_name=$(basename "$0")
 bin_dir=$(dirname "$0")
 dir=$bin_dir"/../Cellar/"$formula_name"/"$version"/bin"
@@ -56,6 +56,8 @@ here | i_am_here                   - "i am here"
 not_here | nh                      - "i dont want to be here"
 still_here | sh                    - "still here?"
 good | goody | g                   - "goody"
+matan                              - "Matan isn't it Purim today?"
+what_do_you_want | wdyw            - "what do you want?!"
 lebowski | money                   - "where is the money lebowski"
 lemon | give_me_lemons             - [ascii lemon!]
 bean | give_me_beans               - [ascii mr bean!]
@@ -277,7 +279,7 @@ main_options(){
             exit
         ;;
 
-        i_want_to_be_there_yes | iwtbt | there | t3)
+        i_want_to_be_there_yes | iwtbt | there | t1)
             afplay $audio_dir/i_want_to_be_there_yes.mp3 \
             & \
             exit
