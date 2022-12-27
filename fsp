@@ -27,11 +27,16 @@ check_audio_dir(){
     fi
 }
 
+upgrade_version(){
+    echo "Upgrading $formula_name..."
+    brew upgrade $formula_name
+}
+
 help() {
     cat <<EOF
 This service pack will help you relax with some fulffy sounds.
 
-usage: $script_name <sound_name> [ -h | --help | -v | --version]
+usage: $script_name <sound_name> [ -h | --help | -v | --version | -u | --upgrade]
 
 Examples:
     $script_name so
@@ -80,6 +85,10 @@ control_options(){
         echo bin_dir=$bin_dir
         echo dir=$dir
         echo audio_dir=$audio_dir
+        exit
+        ;;
+        -u | --upgrade)
+        upgrade_version
         exit
         ;;
         "")

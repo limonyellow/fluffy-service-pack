@@ -10,7 +10,11 @@ This service pack will help you relax with some fulffy sounds.
 
 ## Usage
 
-`fsp so`
+`fsp <sound_name> [ -h | --help | -v | --version | -u | --upgrade]`  
+
+### Example
+
+`fsp so_fluffy`
 
 ## Requirements
 
