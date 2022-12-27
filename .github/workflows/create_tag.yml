@@ -6,6 +6,9 @@ on:
 
 jobs:
   github-example-tags:
+  
+    runs-on: ubuntu-latest
+    
     steps:
       - name: GitHub Tag Name example
         run: |
