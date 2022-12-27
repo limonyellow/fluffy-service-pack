@@ -1,18 +1,18 @@
-name: Create_tag
+name: Create tag
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag number'     
+        required: true
 
 jobs:
-  github-example-tags:
-  
-    runs-on: ubuntu-latest
-    
+  create-tag:
+    runs-on: ubuntu-latest    
     steps:
-      - name: GitHub Tag Name example
-        run: |
-          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
-          git tag -a test1 -m "version test1"
-          git push origin test1
+      - uses: actions/checkout@v3
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: v${{ inputs.tag }}
+          message: "version ${{ inputs.tag }}"
