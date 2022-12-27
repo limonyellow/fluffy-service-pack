@@ -8,7 +8,7 @@
 unset github_username dir repo license_url
 
 formula_name="fluffy-service-pack"
-version="0.0.8"
+version="0.0.10"
 script_name=$(basename "$0")
 bin_dir=$(dirname "$0")
 dir=$bin_dir"/../Cellar/"$formula_name"/"$version"/bin"
@@ -56,6 +56,8 @@ here | i_am_here                   - "i am here"
 not_here | nh                      - "i dont want to be here"
 still_here | sh                    - "still here?"
 good | goody | g                   - "goody"
+matan                              - "Matan isn't it Purim today?"
+what_do_you_want | wdyw            - "what do you want?!"
 crickets | crcr                    - "crr crr"
 lebowski | money                   - "where is the money lebowski"
 lemon | give_me_lemons             - [ascii lemon!]
@@ -278,7 +280,7 @@ main_options(){
             exit
         ;;
 
-        i_want_to_be_there_yes | iwtbt | there | t3)
+        i_want_to_be_there_yes | iwtbt | there | t1)
             afplay $audio_dir/i_want_to_be_there_yes.mp3 \
             & \
             exit
@@ -322,6 +324,36 @@ main_options(){
 
         where_is_the_money_lebowski | where_is_the_money | lebowski | money)
             afplay $audio_dir/where_is_the_money_lebowski.mp3 \
+            & \
+            exit
+        ;;
+
+        team_that_i_build | team)
+            afplay $audio_dir/team_builder.mp3 \
+            & \
+            exit
+        ;;
+
+        miluim)
+            afplay $audio_dir/miluim.mp3 \
+            & \
+            exit
+        ;;
+
+        matan | purim)
+            afplay $audio_dir/matan.mp3 \
+            & \
+            exit
+        ;;
+
+        what_do_you_want | wdyw)
+            afplay $audio_dir/what_do_you_want.mp3 \
+            & \
+            exit
+        ;;
+
+        story)
+            afplay $audio_dir/story.mp3 \
             & \
             exit
         ;;
