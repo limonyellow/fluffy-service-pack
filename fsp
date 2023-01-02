@@ -66,6 +66,9 @@ what_do_you_want | wdyw            - "what do you want?!"
 crickets | crcr                    - "crr crr"
 lebowski | money                   - "where is the money lebowski"
 floccinaucinihilipilification      - "floccinaucinihilipilification" 
+ding_dong | ding | d               - [doorbell]
+hello | h                          - "hello!"
+free_book | fb                     - "I have a free book"
 lemon | give_me_lemons             - [ascii lemon!]
 bean | give_me_beans               - [ascii mr bean!]
 
@@ -376,6 +379,24 @@ main_options(){
 
         floccinaucinihilipilification | floc)
             afplay $audio_dir/floccinaucinihilipilification.mp3 \
+            & \
+            exit
+        ;;
+
+        ding_dong | ding | d)
+            afplay $audio_dir/ding_dong.mp3 \
+            & \
+            exit
+        ;;
+
+        hello | h)
+            afplay $audio_dir/hello.mp3 \
+            & \
+            exit
+        ;;
+
+        free_book | fb)
+            afplay $audio_dir/free_book.mp3 \
             & \
             exit
         ;;
