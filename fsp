@@ -63,7 +63,9 @@ still_here | sh                    - "still here?"
 good | goody | g                   - "goody"
 matan                              - "Matan isn't it Purim today?"
 what_do_you_want | wdyw            - "what do you want?!"
+crickets | crcr                    - "crr crr"
 lebowski | money                   - "where is the money lebowski"
+floccinaucinihilipilification      - "floccinaucinihilipilification" 
 lemon | give_me_lemons             - [ascii lemon!]
 bean | give_me_beans               - [ascii mr bean!]
 
@@ -368,6 +370,12 @@ main_options(){
 
         crickets | crcr)
             afplay $audio_dir/crickets.mp3 \
+            & \
+            exit
+        ;;
+
+        floccinaucinihilipilification | floc)
+            afplay $audio_dir/floccinaucinihilipilification.mp3 \
             & \
             exit
         ;;
