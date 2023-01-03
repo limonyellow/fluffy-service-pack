@@ -18,6 +18,6 @@ jobs:
           message: "version ${{ inputs.tag }}"
       - name: get release sha256
         run: |
-          curl -L https://github.com/limonyellow/fluffy-service-pack/archive/refs/tags/v${{ inputs.tag }} --output release.tar.gz
+          curl -Lf https://github.com/limonyellow/fluffy-service-pack/archive/refs/tags/v${{ inputs.tag }}.tar.gz --output release.tar.gz
           sha256sum release.tar.gz | cut -d " " -f1
         id: sha256
