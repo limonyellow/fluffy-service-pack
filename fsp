@@ -68,6 +68,7 @@ what_do_you_want | wdyw            - "what do you want?!"
 crickets | crcr                    - "crr crr"
 lebowski | money                   - "where is the money lebowski"
 get_to_the_choppa | gttc | choppa  - "get to the choppa!"
+arm_the_laser | laser | "laser"    - "arm the laser!"
 floccinaucinihilipilification|floc - "floccinaucinihilipilification" 
 ding_dong | ding | d               - [doorbell]
 hello | h                          - "hello!"
@@ -316,6 +317,10 @@ main_options(){
 
         get_to_the_choppa | gttc | choppa)
             play "$audio_dir/get_to_the_choppa.mp3"
+        ;;
+
+        arm_the_laser | laser | atl)
+            play "$audio_dir/arm_the_laser.mp3"
         ;;
 
         team_that_i_build | team)
