@@ -8,7 +8,7 @@
 unset github_username dir repo license_url
 
 formula_name="fluffy-service-pack"
-version="0.0.14"
+version="0.0.15"
 script_name=$(basename "$0")
 bin_dir=$(dirname "$0")
 dir=$bin_dir"/../Cellar/"$formula_name"/"$version"/bin"
@@ -29,7 +29,7 @@ check_audio_dir(){
 
 upgrade_version(){
     echo "Upgrading $formula_name..."
-    brew upgrade $formula_name
+    brew upgrabrew create https://github.com/limonyellow/fluffy-service-pack/archive/refs/tags/v<version_tag>.tar.gzde $formula_name
 }
 
 help() {
@@ -192,25 +192,25 @@ main_options(){
         ;;
 
         its_so_fluffy | isf)
-            afplay $audio_dir/its_so_fluffy.mp3 \
+            afplay -v 4 $audio_dir/its_so_fluffy.mp3 \
             & \
             exit
         ;;
 
         its_so_fluffy_im_gonna_die | so_fluffy_im_gonna_die | sfigd | isfigd | die)
-            afplay $audio_dir/so_fluffy_im_gonna_die.mp3 \
+            afplay -v 4 $audio_dir/so_fluffy_im_gonna_die.mp3 \
             & \
             exit
         ;;
 
         always_can_count_on_you | always_could_count_on_you | accoy)
-            afplay $audio_dir/always_could_count_on_you.mp3 \
+            afplay -v 7 $audio_dir/always_could_count_on_you.mp3 \
             & \
             exit
         ;;
 
         owe | oowee | oooweee)
-            afplay $audio_dir/oooweee.mp3 \
+            afplay -v 3 $audio_dir/oooweee.mp3 \
             & \
             exit
         ;;
@@ -222,7 +222,7 @@ main_options(){
         ;;
 
         plumbus | pb | p)
-            afplay $audio_dir/plumbus.mp3 \
+            afplay -v 2 $audio_dir/plumbus.mp3 \
             & \
             exit
         ;;
@@ -354,19 +354,19 @@ main_options(){
         ;;
 
         matan | purim)
-            afplay $audio_dir/matan.mp3 \
+            afplay -v 0.3 $audio_dir/matan.mp3 \
             & \
             exit
         ;;
 
         what_do_you_want | wdyw)
-            afplay $audio_dir/what_do_you_want.mp3 \
+            afplay -v 0.3 $audio_dir/what_do_you_want.mp3 \
             & \
             exit
         ;;
 
         story)
-            afplay $audio_dir/story.mp3 \
+            afplay -v 0.5 $audio_dir/story.mp3 \
             & \
             exit
         ;;
