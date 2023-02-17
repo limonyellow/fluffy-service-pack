@@ -8,7 +8,7 @@
 unset github_username dir repo license_url
 
 formula_name="fluffy-service-pack"
-version="0.0.15"
+version="0.0.16"
 script_name=$(basename "$0")
 bin_dir=$(dirname "$0")
 dir=$bin_dir"/../Cellar/"$formula_name"/"$version"/bin"
@@ -67,10 +67,13 @@ matan                              - "Matan isn't it Purim today?"
 what_do_you_want | wdyw            - "what do you want?!"
 crickets | crcr                    - "crr crr"
 lebowski | money                   - "where is the money lebowski"
-floccinaucinihilipilification      - "floccinaucinihilipilification" 
+floccinaucinihilipilification|floc - "floccinaucinihilipilification" 
 ding_dong | ding | d               - [doorbell]
 hello | h                          - "hello!"
 free_book | fb                     - "I have a free book"
+spider_pig | sp                    - "spider pig, spider pig"
+ba_dum_tss | bdt | drums           - [drums sound]
+seinfeld | seinfeld_theme          - [seinfeld theme]
 lemon | give_me_lemons             - [ascii lemon!]
 bean | give_me_beans               - [ascii mr bean!]
 
@@ -195,7 +198,7 @@ EOF
 
 ############# Main body ############
 main_options(){
-    case "$sound_command" in
+    case "$1" in
         so)
             play "$audio_dir/so_audio.mp3"
         ;;
@@ -381,4 +384,4 @@ update_audio_dir
 check_audio_dir
 control_options $1
 sound_options $2
-main_options $1
+main_options $sound_command
