@@ -13,6 +13,8 @@ script_name=$(basename "$0")
 bin_dir=$(dirname "$0")
 dir=$bin_dir"/../Cellar/"$formula_name"/"$version"/bin"
 audio_dir=$dir"/audio"
+sound_command=""
+blocking=false
 
 update_audio_dir(){
     if [ "$FSP_AUDIO_PATH" ]; then
@@ -36,7 +38,7 @@ help() {
     cat <<EOF
 This service pack will help you relax with some fulffy sounds.
 
-usage: $script_name <sound_name> [ -h | --help | -v | --version | -u | --upgrade]
+usage: $script_name <sound_name> [ -h | --help | -v | --version | -u | --upgrade | -b | --blocking]
 
 Examples:
     $script_name so
@@ -103,6 +105,28 @@ control_options(){
         exit
         ;;
     esac
+
+    sound_command=$1
+}
+
+# Sound functions #
+sound_options(){
+    case "$1" in
+        -b | --blocking)
+        blocking=true
+        ;;
+    esac
+
+    if [ "$blocking" = true ]; 
+    then
+        finish_sound="&& exit"
+    else
+        finish_sound="& exit"
+    fi
+}
+
+play(){
+    eval afplay $1 $finish_sound
 }
 
 # Ascii functions #
@@ -171,42 +195,30 @@ EOF
 
 ############# Main body ############
 main_options(){
-    case "$1" in
+    case "$sound_command" in
         so)
-            afplay $audio_dir/so_audio.mp3 \
-            & \
-            exit
+            play "$audio_dir/so_audio.mp3"
         ;;
 
         so_fluffy)
             echo ">'so_fluffy!'"
-            afplay $audio_dir/so_fluffy_audio.wav \
-            & \
-            exit
+            play "$audio_dir/so_fluffy_audio.wav"
         ;;
 
         fluffy | fluffy!)
-            afplay $audio_dir/fluffy_short.wav \
-            & \
-            exit
+            play "$audio_dir/fluffy_short.wav"
         ;;
 
         its_so_fluffy | isf)
-            afplay -v 4 $audio_dir/its_so_fluffy.mp3 \
-            & \
-            exit
+            play "-v 4 $audio_dir/its_so_fluffy.mp3"
         ;;
 
         its_so_fluffy_im_gonna_die | so_fluffy_im_gonna_die | sfigd | isfigd | die)
-            afplay -v 4 $audio_dir/so_fluffy_im_gonna_die.mp3 \
-            & \
-            exit
+            play "-v 4 $audio_dir/so_fluffy_im_gonna_die.mp3"
         ;;
 
         always_can_count_on_you | always_could_count_on_you | accoy)
-            afplay -v 7 $audio_dir/always_could_count_on_you.mp3 \
-            & \
-            exit
+            play "-v 7 $audio_dir/always_could_count_on_you.mp3"
         ;;
 
         owe | oowee | oooweee)
@@ -401,6 +413,22 @@ main_options(){
             exit
         ;;
 
+        spider_pig | sp)
+            afplay $audio_dir/spider_pig.mp3 \
+            & \
+            exit
+        ;;
+
+        ba_dum_tss | bdt | drums)
+            afplay $audio_dir/ba_dum_tss.mp3 \
+            & \
+            exit
+        ;;
+
+        seinfeld | seinfeld_theme)
+            play $audio_dir/seinfeld_theme.mp3
+        ;;
+
         lemon | give_me_lemons | give_me_lemon)
             give_me_lemon
             exit
@@ -420,4 +448,5 @@ main_options(){
 update_audio_dir
 check_audio_dir
 control_options $1
+sound_options $2
 main_options $1
