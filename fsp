@@ -29,7 +29,7 @@ check_audio_dir(){
 
 upgrade_version(){
     echo "Upgrading $formula_name..."
-    brew upgrabrew create https://github.com/limonyellow/fluffy-service-pack/archive/refs/tags/v<version_tag>.tar.gzde $formula_name
+    brew upgrade $formula_name
 }
 
 help() {
