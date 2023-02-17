@@ -8,11 +8,13 @@
 unset github_username dir repo license_url
 
 formula_name="fluffy-service-pack"
-version="0.0.15"
+version="0.0.16"
 script_name=$(basename "$0")
 bin_dir=$(dirname "$0")
 dir=$bin_dir"/../Cellar/"$formula_name"/"$version"/bin"
 audio_dir=$dir"/audio"
+sound_command=""
+blocking=false
 
 update_audio_dir(){
     if [ "$FSP_AUDIO_PATH" ]; then
@@ -36,7 +38,7 @@ help() {
     cat <<EOF
 This service pack will help you relax with some fulffy sounds.
 
-usage: $script_name <sound_name> [ -h | --help | -v | --version | -u | --upgrade]
+usage: $script_name <sound_name> [ -h | --help | -v | --version | -u | --upgrade | -b | --blocking]
 
 Examples:
     $script_name so
@@ -65,10 +67,13 @@ matan                              - "Matan isn't it Purim today?"
 what_do_you_want | wdyw            - "what do you want?!"
 crickets | crcr                    - "crr crr"
 lebowski | money                   - "where is the money lebowski"
-floccinaucinihilipilification      - "floccinaucinihilipilification" 
+floccinaucinihilipilification|floc - "floccinaucinihilipilification" 
 ding_dong | ding | d               - [doorbell]
 hello | h                          - "hello!"
 free_book | fb                     - "I have a free book"
+spider_pig | sp                    - "spider pig, spider pig"
+ba_dum_tss | bdt | drums           - [drums sound]
+seinfeld | seinfeld_theme          - [seinfeld theme]
 lemon | give_me_lemons             - [ascii lemon!]
 bean | give_me_beans               - [ascii mr bean!]
 
@@ -103,6 +108,28 @@ control_options(){
         exit
         ;;
     esac
+
+    sound_command=$1
+}
+
+# Sound functions #
+sound_options(){
+    case "$1" in
+        -b | --blocking)
+        blocking=true
+        ;;
+    esac
+
+    if [ "$blocking" = true ]; 
+    then
+        finish_sound="&& exit"
+    else
+        finish_sound="& exit"
+    fi
+}
+
+play(){
+    eval afplay $1 $finish_sound
 }
 
 # Ascii functions #
@@ -173,232 +200,168 @@ EOF
 main_options(){
     case "$1" in
         so)
-            afplay $audio_dir/so_audio.mp3 \
-            & \
-            exit
+            play "$audio_dir/so_audio.mp3"
         ;;
 
         so_fluffy)
             echo ">'so_fluffy!'"
-            afplay $audio_dir/so_fluffy_audio.wav \
-            & \
-            exit
+            play "$audio_dir/so_fluffy_audio.wav"
         ;;
 
         fluffy | fluffy!)
-            afplay $audio_dir/fluffy_short.wav \
-            & \
-            exit
+            play "$audio_dir/fluffy_short.wav"
         ;;
 
         its_so_fluffy | isf)
-            afplay -v 4 $audio_dir/its_so_fluffy.mp3 \
-            & \
-            exit
+            play "-v 4 $audio_dir/its_so_fluffy.mp3"
         ;;
 
         its_so_fluffy_im_gonna_die | so_fluffy_im_gonna_die | sfigd | isfigd | die)
-            afplay -v 4 $audio_dir/so_fluffy_im_gonna_die.mp3 \
-            & \
-            exit
+            play "-v 4 $audio_dir/so_fluffy_im_gonna_die.mp3"
         ;;
 
         always_can_count_on_you | always_could_count_on_you | accoy)
-            afplay -v 7 $audio_dir/always_could_count_on_you.mp3 \
-            & \
-            exit
+            play "-v 7 $audio_dir/always_could_count_on_you.mp3"
         ;;
 
         owe | oowee | oooweee)
-            afplay -v 3 $audio_dir/oooweee.mp3 \
-            & \
-            exit
+            play "-v 3 $audio_dir/oooweee.mp3"
         ;;
         
         hihi | worms | hh)
-            afplay $audio_dir/hihi_worms.mp3 \
-            & \
-            exit
+            play "$audio_dir/hihi_worms.mp3"
         ;;
 
         plumbus | pb | p)
-            afplay -v 2 $audio_dir/plumbus.mp3 \
-            & \
-            exit
+            play "-v 2 $audio_dir/plumbus.mp3"
         ;;
 
         always_wondered | awhpgm | aw | plumbuses)
-            afplay $audio_dir/always_wondered.mp3 \
-            & \
-            exit
+            play "$audio_dir/always_wondered.mp3"
         ;;
 
         come_back | cb)
-            afplay $audio_dir/come_back.mp3 \
-            & \
-            exit
+            play "$audio_dir/come_back.mp3"
         ;;
 
         come_back_slow | cbs)
-            afplay $audio_dir/come_back_slow.mp3 \
-            & \
-            exit
+            play "$audio_dir/come_back_slow.mp3"
         ;;
 
         come_back_strong | cbst | c)
-            afplay $audio_dir/come_back_strong.mp3 \
-            & \
-            exit
+            play "$audio_dir/come_back_strong.mp3"
         ;;
 
         raccoon | r)
-            afplay $audio_dir/raccoon.mp3 \
-            & \
-            exit
+            play "$audio_dir/raccoon.mp3"
         ;;
 
         blintzes)
-            afplay $audio_dir/blintzes.mp3 \
-            & \
-            exit
+            play "$audio_dir/blintzes.mp3"
         ;;
 
         puree)
-            afplay $audio_dir/puree.mp3 \
-            & \
-            exit
+            play "$audio_dir/puree.mp3"
         ;;
 
         rummikub | remi | rumi)
-            afplay $audio_dir/rummikub.mp3 \
-            & \
-            exit
+            play "$audio_dir/rummikub.mp3"
         ;;
 
         papaya | pa)
-            afplay $audio_dir/papaya.mp3 \
-            & \
-            exit
+            play "$audio_dir/papaya.mp3"
         ;;
 
         papoi)
-            afplay $audio_dir/papoi.mp3 \
-            & \
-            exit
+            play "$audio_dir/papoi.mp3"
         ;;
 
         papoi2)
-            afplay $audio_dir/papoi2.mp3 \
-            & \
-            exit
+            play "$audio_dir/papoi2.mp3"
         ;;
 
         i_want_to_be_there_yes | iwtbt | there | t1)
-            afplay $audio_dir/i_want_to_be_there_yes.mp3 \
-            & \
-            exit
+            play "$audio_dir/i_want_to_be_there_yes.mp3"
         ;;
 
         i_want_to_be_there | there2 | t2)
-            afplay $audio_dir/i_want_to_be_theree.mp3 \
-            & \
-            exit
+            play "$audio_dir/i_want_to_be_theree.mp3"
         ;;
 
         there3 | t3)
-            afplay $audio_dir/i_want_to_be_there.mp3 \
-            & \
-            exit
+            play "$audio_dir/i_want_to_be_there.mp3"
         ;;
 
         i_am_here | here | iah)
-            afplay $audio_dir/i_am_here.mp3 \
-            & \
-            exit
+            play "$audio_dir/i_am_here.mp3"
         ;;
 
         dont_want_to_be_here | here_not | not_here | nh | dwtbh | idwtbh)
-            afplay $audio_dir/dont_want_to_be_here.mp3 \
-            & \
-            exit
+            play "$audio_dir/dont_want_to_be_here.mp3"
         ;;
 
         still_here | sh)
-            afplay $audio_dir/still_here.mp3 \
-            & \
-            exit
+            play "$audio_dir/still_here.mp3"
         ;;
 
         goody | good | g)
-            afplay $audio_dir/goody.mp3 \
-            & \
-            exit
+            play "$audio_dir/goody.mp3"
         ;;
 
         where_is_the_money_lebowski | where_is_the_money | lebowski | money)
-            afplay $audio_dir/where_is_the_money_lebowski.mp3 \
-            & \
-            exit
+            play "$audio_dir/where_is_the_money_lebowski.mp3"
         ;;
 
         team_that_i_build | team)
-            afplay $audio_dir/team_builder.mp3 \
-            & \
-            exit
+            play "$audio_dir/team_builder.mp3"
         ;;
 
         miluim)
-            afplay $audio_dir/miluim.mp3 \
-            & \
-            exit
+            play "$audio_dir/miluim.mp3"
         ;;
 
         matan | purim)
-            afplay -v 0.3 $audio_dir/matan.mp3 \
-            & \
-            exit
+            play "-v 0.3 $audio_dir/matan.mp3"
         ;;
 
         what_do_you_want | wdyw)
-            afplay -v 0.3 $audio_dir/what_do_you_want.mp3 \
-            & \
-            exit
+            play "-v 0.3 $audio_dir/what_do_you_want.mp3"
         ;;
 
         story)
-            afplay -v 0.5 $audio_dir/story.mp3 \
-            & \
-            exit
+            play "-v 0.5 $audio_dir/story.mp3"
         ;;
 
         crickets | crcr)
-            afplay $audio_dir/crickets.mp3 \
-            & \
-            exit
+            play "$audio_dir/crickets.mp3"
         ;;
 
         floccinaucinihilipilification | floc)
-            afplay $audio_dir/floccinaucinihilipilification.mp3 \
-            & \
-            exit
+            play "$audio_dir/floccinaucinihilipilification.mp3"
         ;;
 
         ding_dong | ding | d)
-            afplay $audio_dir/ding_dong.mp3 \
-            & \
-            exit
+            play "$audio_dir/ding_dong.mp3"
         ;;
 
         hello | h)
-            afplay $audio_dir/hello.mp3 \
-            & \
-            exit
+            play "$audio_dir/hello.mp3"
         ;;
 
         free_book | fb)
-            afplay $audio_dir/free_book.mp3 \
-            & \
-            exit
+            play "$audio_dir/free_book.mp3"
+        ;;
+
+        spider_pig | sp)
+            play "$audio_dir/spider_pig.mp3"
+        ;;
+
+        ba_dum_tss | bdt | drums)
+            play "$audio_dir/ba_dum_tss.mp3"
+        ;;
+
+        seinfeld | seinfeld_theme)
+            play $audio_dir/seinfeld_theme.mp3
         ;;
 
         lemon | give_me_lemons | give_me_lemon)
@@ -420,4 +383,5 @@ main_options(){
 update_audio_dir
 check_audio_dir
 control_options $1
-main_options $1
+sound_options $2
+main_options $sound_command
