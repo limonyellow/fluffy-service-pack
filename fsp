@@ -8,7 +8,7 @@
 unset github_username dir repo license_url
 
 formula_name="fluffy-service-pack"
-version="0.0.16"
+version="0.0.17"
 script_name=$(basename "$0")
 bin_dir=$(dirname "$0")
 dir=$bin_dir"/../Cellar/"$formula_name"/"$version"/bin"
@@ -67,6 +67,7 @@ matan                              - "Matan isn't it Purim today?"
 what_do_you_want | wdyw            - "what do you want?!"
 crickets | crcr                    - "crr crr"
 lebowski | money                   - "where is the money lebowski"
+get_to_the_choppa | gttc | choppa  - "get to the choppa!"
 floccinaucinihilipilification|floc - "floccinaucinihilipilification" 
 ding_dong | ding | d               - [doorbell]
 hello | h                          - "hello!"
@@ -74,6 +75,7 @@ free_book | fb                     - "I have a free book"
 spider_pig | sp                    - "spider pig, spider pig"
 ba_dum_tss | bdt | drums           - [drums sound]
 seinfeld | seinfeld_theme          - [seinfeld theme]
+kube                               - "Kube Hamusta"
 lemon | give_me_lemons             - [ascii lemon!]
 bean | give_me_beans               - [ascii mr bean!]
 
@@ -312,6 +314,10 @@ main_options(){
             play "$audio_dir/where_is_the_money_lebowski.mp3"
         ;;
 
+        get_to_the_choppa | gttc | choppa)
+            play "$audio_dir/get_to_the_choppa.mp3"
+        ;;
+
         team_that_i_build | team)
             play "$audio_dir/team_builder.mp3"
         ;;
@@ -362,6 +368,10 @@ main_options(){
 
         seinfeld | seinfeld_theme)
             play $audio_dir/seinfeld_theme.mp3
+        ;;
+
+        kube)
+            play $audio_dir/kube.mp3
         ;;
 
         lemon | give_me_lemons | give_me_lemon)
